@@ -28,7 +28,6 @@ class MapReduceBasic():
     
     #Inputs is an iterable containing the data files to be processed. 
     #This function performs the map reduce with the given functions.
-    #https://stackoverflow.com/questions/9663562/what-is-the-difference-between-init-and-call
     def __call__(self, inputs, chunksize=1): #chunksize applies to one file. What if multiple files?
         mapped_response = self.pool.map(self.map_function, inputs, chunksize=chunksize)
         grouped_data = self.group(itertools.chain(*mapped_response)) #chain combines the iterables in the argument. Because partition() takes a dictionary
